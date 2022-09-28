@@ -17,8 +17,10 @@ Use Replit to edit a copy of the script:
 * Open `https://replit.com/@aaron-mansheim/resedire?v=1`
 * Press the white "Fork repl" button with the two-pronged fork on it.
 
-At Replit, in a "repl", use the shell tab to report the implementation time:
+Use Replit's Shell tab to report the implementation time:
 
+* If you have this instead of the Shell tab, then press the blue "Edit in workspace" button with the pencil on it.
+* Use the Shell tab.
 * Enter command: `time python transformer.py`
 * Sample output:
 
