@@ -10,6 +10,15 @@ import sys
 
 DEBUG = False
 
+DEMO_JSON_FILENAME='JSON file'
+
+DEMO_JSON=(''
+'{"number_1":{"N":"1.50"},"string_1":{"S":"784498 "},'
+'"string_2":{"S":"2014-07-16T20:55:46Z"},'
+'"map_1":{"M":{"bool_1":{"BOOL":"truthy"},"null_1":{"NULL ":"true"},'
+'"list_1":{"L":[{"S":""},{"N":"011"},{"N":"5215s"},{"BOOL":"f"},{"NULL":"0"}]}}},'
+'"list_2":{"L":"noop"},"list_3":{"L":["noop"]},"":{"S":"noop"}}')
+
 def as_invalid(debug_string):
     return debug_string if DEBUG else ''
 
@@ -103,10 +112,13 @@ def as_map(data):
         rebuild[key] = result[key]
     return rebuild
 
+def transforms(data):
+    return json.dumps([as_map(data)], indent=2)
+
 def transform(filename):
     with open(filename, encoding='utf8') as jsonfile:
         data = json.load(jsonfile)
-    return json.dumps([as_map(data)], indent=2)
+    return transforms(data)
 
 def tool():
     if len(sys.argv) < 2:
@@ -114,6 +126,30 @@ def tool():
         sys.exit(1)
     print(transform(sys.argv[1]))
 
+def demo_json():
+    data = json.loads(DEMO_JSON)
+    indented = json.dumps(data, indent=2)
+    return indented
+
+def transform_demo_json():
+    retry_delay = 1
+    while retry_delay < 30:
+        try:
+            return transform(DEMO_JSON_FILENAME)
+        except FileNotFoundError:
+            print(f'File {DEMO_JSON_FILENAME}: Not found.', file=sys.stderr)
+            print(f'\tWill write the file, wait {retry_delay}s, and retry.', file=sys.stderr)
+            data = demo_json()
+            with open(DEMO_JSON_FILENAME, 'w', encoding='utf8') as jsonfile:
+                print(data, file=jsonfile)
+            retry_delay *= 2
+    print('Too many attempts to read the file.', file=sys.stderr)
+    print('\tWill transform demo JSON from memory.', file=sys.stderr)
+    return transforms(demo_json())
+
+def demo():
+    print(transform_demo_json())
+
 if __name__ == '__main__':
     # tool()
-    print(transform('JSON file'))
+    demo()
