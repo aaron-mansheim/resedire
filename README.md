@@ -2,22 +2,22 @@
 
 ## Execution
 
-Local execution. Use Python to run the script locally: `python transformer.py`
+🏠 **Local execution.** Use Python to run the script locally: `python transformer.py`
 
 * Need the script locally? Use Python: `python -c 'import urllib.request;urllib.request.urlretrieve("https://raw.githubusercontent.com/aaron-mansheim/resedire/main/transformer.py","transformer.py")`
 * Need the data file "JSON file" locally? The script will create one.
 
-Online execution. Use Replit to run the script online:
+🛳 **Online execution.** Use Replit to run the script online:
 
 * Open `https://replit.com/@aaron-mansheim/resedire?v=1`
 * Press the green Run button with the triangle on it.
 
-Use Replit to edit a copy of the script:
+✍️ **Editing.** Use Replit to edit a copy of the script:
 
 * Open `https://replit.com/@aaron-mansheim/resedire?v=1`
 * Press the white "Fork repl" button with the two-pronged fork on it.
 
-Use Replit's Shell tab to report the implementation time:
+⏱ **Timing.** Use Replit's Shell tab to report the implementation time:
 
 * If you have this instead of the Shell tab, then press the blue "Edit in workspace" button with the pencil on it.
 * Use the Shell tab.
@@ -49,4 +49,4 @@ Use Replit's Shell tab to report the implementation time:
 
     More about the output of the `time` utility is available in its specification in POSIX.1-2017: https://pubs.opengroup.org/onlinepubs/9699919799/
 
-Use GitHub to obtain the git repository: `http://github.com/aaron-mansheim/resedire`
+🧳 **Cloning.** Use GitHub to obtain the git repository: `http://github.com/aaron-mansheim/resedire`
